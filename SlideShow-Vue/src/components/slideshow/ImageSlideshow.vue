@@ -1,6 +1,12 @@
 <template>
-  <div class="flex" @mouseenter="pause" @mouseleave="play">
-    <SlideshowImage :src="currentImage" :alt="`Image Slide ${currentIndex}`" />
+  <div
+    class="relative w-[700px] h-auto overflow-hidden group"
+    @mouseenter="pause"
+    @mouseleave="play"
+  >
+    <transition name="fade" mode="out-in">
+      <SlideshowImage :src="currentImage" :alt="`Image Slide ${currentIndex}`" />
+    </transition>
     <SlideshowControls @prev="prev" @next="next" />
   </div>
 </template>
@@ -20,3 +26,14 @@ const { currentIndex, currentImage, next, prev, play, pause } = useSlideshow(
   emit,
 )
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
