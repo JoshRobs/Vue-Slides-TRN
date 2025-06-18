@@ -4,7 +4,7 @@ export function useSlideshow(
   images: string[],
   autoplay = false,
   interval = 3000,
-  emit: (event: 'change', index: number) => void
+  emit: (event: 'change', index: number) => void,
 ) {
   const currentIndex = ref(0)
   const timer = ref<number | null>(null)
@@ -41,7 +41,10 @@ export function useSlideshow(
 
   onMounted(play)
   onUnmounted(pause)
-  watch(() => autoplay, (val) => (val ? play() : pause()))
+  watch(
+    () => autoplay,
+    (val) => (val ? play() : pause()),
+  )
 
   return {
     currentIndex,
@@ -50,6 +53,6 @@ export function useSlideshow(
     prev,
     goTo,
     play,
-    pause
+    pause,
   }
 }

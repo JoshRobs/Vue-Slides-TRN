@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <button @click="$emit('prev')" class="absolute left-0 top-1/2 -translate-y-1/2 px-4 py-2 bg-black/50 text-white">‹</button>
-    <button @click="$emit('next')" class="absolute right-0 top-1/2 -translate-y-1/2 px-4 py-2 bg-black/50 text-white">›</button>
+  <div class="absolute inset-0 z-10 flex items-center justify-between pointer-events-none">
+    <button
+      @click="$emit('prev')"
+      class="h-full w-12 bg-black/50 text-white text-2xl pointer-events-auto"
+    >
+      ‹
+    </button>
+    <button
+      @click="$emit('next')"
+      class="h-full w-12 bg-black/50 text-white text-2xl pointer-events-auto"
+    >
+      ›
+    </button>
   </div>
 </template>
 

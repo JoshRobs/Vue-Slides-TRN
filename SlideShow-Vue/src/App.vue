@@ -1,17 +1,11 @@
 <script setup>
-import Slideshow from './components/slideshow/Slideshow.vue';
+import ImageSlideshow from './components/slideshow/ImageSlideshow.vue'
 
-const images = [
-  '/images/slide1.jpg',
-  '/images/slide2.jpg',
-  '/images/slide3.jpg',
-]
+const images = ['image1.png', 'image2.png', 'image3.png']
 </script>
 
 <template>
-    <Slideshow :images="images" />
-/>
+  <ImageSlideshow :images="images" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
