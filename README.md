@@ -1,6 +1,6 @@
 # Getting Started
 
-Step 1: `npm install in` root directory
+Step 1: `npm install` in root directory
 <br>
 Step 2: `npm run dev`
 
