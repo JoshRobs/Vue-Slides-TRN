@@ -35,14 +35,12 @@ const props = defineProps({
     default: 1000,
   },
 })
-const emit = defineEmits(['change'])
 
 // Here we set up next and previous buttons, as well as autoplay and wait time before next slide
 const { currentIndex, currentImage, next, prev, play, pause } = useSlideshow(
   props.images,
   props.autoplay,
   props.interval,
-  emit,
 )
 </script>
 

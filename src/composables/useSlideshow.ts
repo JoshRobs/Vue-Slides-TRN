@@ -1,11 +1,6 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
-export function useSlideshow(
-  images: string[],
-  autoplay = false,
-  interval = 3000,
-  emit: (event: 'change', index: number) => void,
-) {
+export function useSlideshow(images: string[], autoplay = false, interval = 6000) {
   const currentIndex = ref(0)
   const timer = ref<number | null>(null)
 
@@ -13,17 +8,10 @@ export function useSlideshow(
 
   function next() {
     currentIndex.value = (currentIndex.value + 1) % images.length
-    emit('change', currentIndex.value)
   }
 
   function prev() {
     currentIndex.value = (currentIndex.value - 1 + images.length) % images.length
-    emit('change', currentIndex.value)
-  }
-
-  function goTo(index: number) {
-    currentIndex.value = index
-    emit('change', index)
   }
 
   function play() {
@@ -39,8 +27,15 @@ export function useSlideshow(
     }
   }
 
+  // TODO: Add circles to navigate directly to indexed images
+  function goTo(index: number) {
+    currentIndex.value = index
+  }
+
   onMounted(play)
   onUnmounted(pause)
+
+  // Watcher in case I want to add a UI toggle for autoplay
   watch(
     () => autoplay,
     (val) => (val ? play() : pause()),
